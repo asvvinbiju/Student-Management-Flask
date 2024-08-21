@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        #navbar {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: -8px;
+        }
+
+        #navbar > button {
+            border: none;
+            background-color: white;
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+            font-family: helvetica;
+            margin-right: 20px;
+        }
+        #mainframe {
+            height: 90vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Helvetica;
+            font-size: 10px;
+        }
+        button[id="home"] {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <button id="home">Home</button>
+        <button id="student">Students</button>
+        <button id="teacher">Teachers</button>
+        <button id="logout">Logout</button>
+    </div>
+    <div id="mainframe">
+        <h1>Hello, {{admin['fullname']}}. Nothing here, Explore admin page to display contents</h1>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const logoutbtn = document.getElementById("logout");
+            const studentbtn = document.getElementById("student");
+            const teacherbtn = document.getElementById("teacher");
+            const id = {{id}};
+
+            teacherbtn.addEventListener("click", function(){
+                window.location.href = `/teacherview/${id}`;
+            });
+
+            studentbtn.addEventListener("click", function(){
+                window.location.href = `/studentview/${id}`;
+            });
+
+            logoutbtn.addEventListener("click", function(){
+                window.location.href = "/logout";
+            });
+        });
+    </script>
+</body>
+</html>

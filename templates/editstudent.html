@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #navbar {
+            height: 10vh;
+            width: 100%;
+        }
+
+        #navbar>button {
+            width: 60px;
+            height: 30px;
+            font-size: 15px;
+        }
+
+        #partition1 {
+            height: 20vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        #partition2 {
+            height: 70vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        form {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 18px;
+        }
+        label {
+            margin-top: 20px;
+            align-self: flex-start;
+        }
+        input[type="submit"] {
+            margin: 30px;
+            width: 80px;
+            height: 30px;
+            font-size: 15px;
+        }
+        input {
+            font-size: 15px;
+            margin-top: 5px;
+        }
+        select {
+            margin-top: 30px;
+            width: 180px;
+            height: 30px;
+        }
+        #genderdiv {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 180px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <button id="back">Back</button>
+    </div>
+    <div id="partition1">
+        <h1>Edit Student</h1>
+    </div>
+    <div id="partition2">
+        <form action="/editstudent/{{id}}" method="post">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="enter your username" value="{{user['username']}}">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="enter your password" value="{{user['password']}}">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" placeholder="enter your email address" value="{{student['email']}}">
+            <label for="fullname">Full Name</label>
+            <input type="text" name="fullname" id="fullname" placeholder="enter your full name" value="{{student['fullname']}}">
+            <label for="phone">Phone Number</label>
+            <input type="text" name="phone" id="phone" placeholder="enter your phone number" value="{{student['phone']}}">
+            <label for="Age">Age</label>
+            <input type="number" name="age" id="Age" placeholder="enter your age" value="{{student['age']}}">
+            <label for="genderdiv">Select Gender</label>
+            <div id="genderdiv">
+                <div>
+                    <input type="radio" name="gender" value="Male" id="male">
+                    <label for="male">Male</label>
+                </div>
+                <div>
+                    <input type="radio" name="gender" value="Female" id="female">
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <select name="department" id="">
+                <option value="{{student['department']}}">{{student['department']}}</option>
+                <option value="Computer engineering">Computer Engineering</option>
+                <option value="Civil engineering">Civil Engineering</option>
+                <option value="Mechanical engineering">Mechanical Engineering</option>
+            </select>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const backbtn = document.getElementById("back");
+            const id = {{id}};
+
+            backbtn.addEventListener("click", function () {
+                window.location.href = `/studenthome/${id}`;
+            })
+        })
+    </script>
+</body>
+</html>

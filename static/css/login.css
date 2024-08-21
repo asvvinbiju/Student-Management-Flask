@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+input {
+    height: 25px;
+    width: 200px;
+}
+.gender {
+    display: flex;
+    justify-content: space-evenly;
+    width: max-content;
+    align-items: center;
+}
+label {
+    margin-top: 20px;
+    align-self: flex-start;
+}

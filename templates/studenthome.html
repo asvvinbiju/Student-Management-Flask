@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{student['fullname']}} - Home</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        #navbar {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: -8px;
+        }
+
+        #navbar > button {
+            border: none;
+            background-color: white;
+            width: 150px;
+            height: 40px;
+            font-size: 20px;
+            font-family: helvetica;
+            margin-right: 20px;
+        }
+
+        button[id="home"] {
+            color: blue;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <button id="home">Home</button>
+        <button id="editprof">Edit Profile</button>
+        <button id="logout">Logout</button>
+    </div>
+    <h1>Hello, {{student['fullname']}}</h1>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const edit = document.getElementById("editprof");
+            const logoutbtn = document.getElementById("logout");
+            const id = {{id}};
+
+            edit.addEventListener("click", function(){
+                window.location.href = `/editstudent/${id}`;
+            })
+
+            logoutbtn.addEventListener("click", function(){
+                window.location.href = "/logout";
+            })
+        })
+    </script>
+</body>
+</html>

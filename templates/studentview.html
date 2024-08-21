@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        #navbar {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: -8px;
+        }
+
+        #navbar>button {
+            border: none;
+            background-color: white;
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+            font-family: helvetica;
+            margin-right: 20px;
+        }
+
+        #mainframe {
+            height: 90vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: Helvetica;
+            font-size: 10px;
+        }
+
+        button[id="student"] {
+            color: blue;
+        }
+
+        table {
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+            overflow: scroll;
+            scroll-behavior: smooth;
+        }
+
+        .tbrow {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <button id="home">Home</button>
+        <button id="student">Students</button>
+        <button id="teacher">Teachers</button>
+        <button id="logout">Logout</button>
+    </div>
+    <div id="mainframe">
+        <table>
+            <tr class="tbrow">
+                <th class="tbrow">Full Name</th>
+                <th class="tbrow">Email</th>
+                <th class="tbrow">Phone</th>
+                <th class="tbrow">Age</th>
+                <th class="tbrow">Gender</th>
+                <th class="tbrow">Department</th>
+            </tr>
+            {% for student in students%}
+            <tr class="tbrow">
+                <td class="tbrow">{{student['fullname']}}</td>
+                <td class="tbrow">{{student['email']}}</td>
+                <td class="tbrow">{{student['phone']}}</td>
+                <td class="tbrow">{{student['age']}}</td>
+                <td class="tbrow">{{student['gender']}}</td>
+                <td class="tbrow">{{student['department']}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const homebtn = document.getElementById("home");
+            const logoutbtn = document.getElementById("logout");
+            const studentbtn = document.getElementById("student");
+            const teacherbtn = document.getElementById("teacher");
+            const id = {{ id }};
+
+        homebtn.addEventListener("click", function () {
+            window.location.href = `/adminhome/${id}`;
+        })
+
+        teacherbtn.addEventListener("click", function () {
+            window.location.href = `/teacherview/${id}`;
+        })
+
+        studentbtn.addEventListener("click", function () {
+            window.location.href = `/studentview/${id}`;
+        })
+
+        logoutbtn.addEventListener("click", function () {
+            window.location.href = "/logout";
+        })
+        })
+    </script>
+</body>
+
+</html>
